@@ -1,5 +1,5 @@
 --- 
-- host: jenkins-master
+- hosts: jenkins-master
   become: true
   tasks: 
   - name: add jenkins key 
