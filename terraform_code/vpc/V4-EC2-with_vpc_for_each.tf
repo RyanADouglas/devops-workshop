@@ -17,7 +17,7 @@ resource "aws_instance" "demo-server" {
   key_name = "Portfolio_Key"
   //security_groups = [ "demo-sg" ]
   vpc_security_group_ids = [aws_security_group.demo-sg.id]
-  subnet_id = aws_subnet.ryan-public_subnet_01.id
+  subnet_id = aws_subnet.ryan-public-subnet-01.id
     for_each = toset(["jenkins-master", "build-slave", "ansible"])
    tags = {
      Name = "${each.key}"
