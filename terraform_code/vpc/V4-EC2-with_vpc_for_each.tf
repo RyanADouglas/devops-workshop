@@ -120,6 +120,6 @@ resource "aws_route_table_association" "ryan-rta-public-subnet-2" {
   module "eks" {
        source = "../eks"
        vpc_id     =     aws_vpc.ryan-vpc.id
-       subnet_ids = [aws_subnet.ryan-public-subnet-01.id,aws_subnet.ryan-public-subnet-02.id]
+       subnet_ids = [aws_subnet.ryan-public_subnet-01.id,aws_subnet.ryan-public_subnet-02.id]
        sg_ids = module.sgs.security_group_public
  }
