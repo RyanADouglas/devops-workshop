@@ -67,7 +67,7 @@ resource "aws_vpc" "ryan-vpc" {
     }
 }
 
-resource "aws_subnet" "ryan-public_subnet_01" {
+resource "aws_subnet" "ryan-public-subnet-01" {
     vpc_id = aws_vpc.ryan-vpc.id
     cidr_block = "10.1.1.0/24"
     map_public_ip_on_launch = "true"
@@ -77,7 +77,7 @@ resource "aws_subnet" "ryan-public_subnet_01" {
     }
 }
 
-resource "aws_subnet" "ryan-public_subnet_02" {
+resource "aws_subnet" "ryan-public-subnet-02" {
     vpc_id = aws_vpc.ryan-vpc.id
     cidr_block = "10.1.2.0/24"
     map_public_ip_on_launch = "true"
@@ -103,12 +103,12 @@ resource "aws_route_table" "ryan-public-rt" {
 }
 
 resource "aws_route_table_association" "ryan-rta-public-subnet-1" {
-    subnet_id = aws_subnet.ryan-public_subnet_01.id
+    subnet_id = aws_subnet.ryan-public-subnet-01.id
     route_table_id = aws_route_table.ryan-public-rt.id
 }
 
 resource "aws_route_table_association" "ryan-rta-public-subnet-2" {
-    subnet_id = aws_subnet.ryan-public_subnet_02.id
+    subnet_id = aws_subnet.ryan-public-subnet-02.id
     route_table_id = aws_route_table.ryan-public-rt.id
 }
 
@@ -120,6 +120,6 @@ resource "aws_route_table_association" "ryan-rta-public-subnet-2" {
   module "eks" {
        source = "../eks"
        vpc_id     =     aws_vpc.ryan-vpc.id
-       subnet_ids = [aws_subnet.ryan-public_subnet-01.id,aws_subnet.ryan-public_subnet-02.id]
+       subnet_ids = [aws_subnet.ryan-public-subnet-01.id,aws_subnet.ryan-public-subnet-02.id]
        sg_ids = module.sgs.security_group_public
  }
